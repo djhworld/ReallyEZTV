@@ -1,11 +1,19 @@
-require 'rubygems'
 require 'sinatra'
+module ContentServer 
+  class ContentServerWrapper
+    def initialize(content)
+      @content = content
+    end
 
-class ContentServer < Sinatra::Base
-  get '/' do
-    settings.content
+    def startServer
+      ContentServerRunner.run! :content => @content
+    end
+  end
+
+  class ContentServerRunner < Sinatra::Base
+    get '/' do
+      settings.content
+    end
   end
 end
 
-#ContentServer.run! :content => "Hello world"
-  

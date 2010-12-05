@@ -9,6 +9,7 @@ class ReallyEZTVShowProcessor
   def getShow(rssData)
     raise ArgumentError if rssData.nil?
     showData = nil
+    puts "Processing RSS feed"
     rssData.items.each { |rssItem|
       begin
         metadata = Hash[*rssItem.description.split(';').collect { |a| a.split(":").flatten.collect { |i| i.strip } }.flatten]     
@@ -16,17 +17,14 @@ class ReallyEZTVShowProcessor
         raise InvalidShowMetadataError
       end
 
-      puts "Item metadata processed successfully. Validating metadata"
-
       if(!validateMetaData(metadata))
         raise InvalidShowMetadataError
       end
 
-      puts "Item metadata was valid. Ingesting new data"
-
       if(showData.nil?)
         showData = ShowData.new(metadata[SHOW_NAME])
       end
+
       showData.ingest(metadata[SEASON].to_i, metadata[EPISODE].to_i, rssItem.pubDate, rssItem.link)  
     }
     return showData 

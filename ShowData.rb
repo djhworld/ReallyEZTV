@@ -9,7 +9,6 @@ class ShowData
 
   def ingest(seasonNumber, episodeNumber, publishedDate, torrentLink)    
     if(@showData[@showName][:seasons].key?seasonNumber) == false
-      puts "Ingesting Season (Season: #{seasonNumber})"
       @showData[@showName][:seasons][seasonNumber] = {}
     end
   
@@ -18,7 +17,6 @@ class ShowData
     end
 
     if(@showData[@showName][:seasons][seasonNumber][:episodes].key?episodeNumber) == false
-      puts "Ingesting Episode (Season: #{seasonNumber}, Episode #{episodeNumber})"
       episode = { :torrentLink => torrentLink, :publishedDate => publishedDate }
       @showData[@showName][:seasons][seasonNumber][:episodes][episodeNumber] = episode 
     end

@@ -6,4 +6,12 @@ module UtilityMethods
     end
     return result 
   end
+
+  def formalDateStr(date)
+    return date.strftime("%d %m %Y %H:%M:%S")
+  end
+
+  def log(message)
+    puts "#{self.class} => #{message}"
+  end
 end

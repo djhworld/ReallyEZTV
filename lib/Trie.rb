@@ -41,7 +41,6 @@ module TrieDataStructure
         current.word = string.intern
       end
 
-      #str.gsub!(' ','')
       strArray = str.split('')
       strArray.each_index do |i|
         child = current.subNode(strArray.fetch(i))
@@ -71,7 +70,6 @@ module TrieDataStructure
     def subSection(str)
       current = @root
       while !current.nil? do
-        #str.gsub!(' ','')
         strArray = str.split('')
         strArray.each_index do |i|
           if(current.subNode(strArray.fetch(i)).nil?)

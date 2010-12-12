@@ -1,7 +1,9 @@
 require 'ShowData.rb'
 require 'lib/exception/InvalidShowMetadataError'
+require 'lib/UtilityMethods'
 
 class ReallyEZTVShowProcessor
+  include UtilityMethods
   SHOW_NAME = "Show Name"
   SEASON = "Season"
   EPISODE = "Episode"
@@ -9,7 +11,7 @@ class ReallyEZTVShowProcessor
   def getShow(rssData)
     raise ArgumentError if rssData.nil?
     showData = nil
-    puts "Processing RSS feed"
+    log("Processing RSS feed")
     rssData.items.each { |rssItem|
       begin
         metadata = Hash[*rssItem.description.split(';').collect { |a| a.split(":").flatten.collect { |i| i.strip } }.flatten]     

@@ -1,68 +1,58 @@
 <html>
-  <head>
-    <title>Really EZTV</title>
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript">
+    <head>
+        <title>Really EZTV</title>
+        <script language="JavaScript" type="text/javascript" src="js/jquery.js"></script>
+        <script language="JavaScript" type="text/javascript" src="js/jquery.autocomplete-min.js"></script>
+        <script language="JavaScript" type="text/javascript">
 
-    $(document).ready(function() {
-      $("#processing").hide();
-
-      $("#showName").keyup(function(e) {
-        if (e.keyCode == 13)
+        $(document).ready(function() 
         {
-          var loadUrl = "/go?show=" + escape($("#showName").val());
-          $("#results").hide('fast', loadContent(loadUrl));
-        }
-      });
+            $("#processing").hide();
+            $("#results").hide();
 
-      function loadContent(url)
-      {
-          $("#processing").fadeIn();
-          $("#results").empty();
-          $("#results").load(url,'',showResults); 
-      }
+            var options, a;
+            jQuery(function() 
+            {
+                options = { serviceUrl:"/auto", width:460, minChars:2, deferRequestBy:100 };
+                a = $('#query').autocomplete(options);
+            });
 
-      function showResults()
-      {
-        $("#processing").fadeOut();
-        $("#results").fadeIn();
-      }
-    });
-  </script>
-  <style type="text/css">
-   div#input {
-     width:500px;
-     margin: 0px auto;
-    }
+            $("#query").keyup(function(e) 
+            {
+                e.preventDefault(); 
+                e.stopPropagation();
+                if (e.keyCode == 13)
+                {
+                    var loadUrl = "/exists/" + escape($("#query").val());
+                    $("#results").hide('fast', loadContent(loadUrl));
+                }
+            });
 
-    input#showName {
-     height:50px; 
-     width:100%;
-     margin:0px auto;
-     font-size:35px;
-    }
+            function loadContent(url)
+            {
+                $("#processing").show();
+                $("#results").empty();
+                $("#results").load(url,'',showResults); 
+            }
 
-    img#processing 
-    {
-      margin:0px auto;
-    }
-
-    h2#title
-    {
-      font-size:50px;
-      font-family:sans-serif;
-      text-align:center;
-    }
-
-  </style>
+            function showResults()
+            {
+                $("#processing").fadeOut();
+                $("#results").fadeIn();
+            }
+        });
+    </script>
+    <link rel="stylesheet" href="style.css" type="text/css" media="screen" /> 
 </head>
 <body>
-    <div id="input">
-      <h2 id="title">Really EZTV</h2>
-      <input placeholder="Show Name" id="showName" type="text" />
-    <div id="results">
-      <img id="processing" src="images/progress.gif" />
+    <div id ="container">
+        <div id="input">
+            <input id="query" type="text" />
+            <img id="processing" src="images/progress.gif" />
+        </div>
+        <br/>
+        <div id="results">
+        </div>
     </div>
-  </div>
 </body>
 </html>

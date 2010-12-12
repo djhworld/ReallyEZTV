@@ -1,19 +1,15 @@
-<html>
-    <head>
-        <title>Really EZTV</title>
-    </head>
-    <body>
-        <ul>
-        <% shows.keys.sort.each do |season| %>
-            <h2>Season: <%= season %></h2>
-            <% shows[season][:episodes].keys.sort.each do |b| %>
-                <% ep = shows[season][:episodes][b] %>
-                <h3>Episode <%= b %></h3>
-                <ul>
-                    <li><%= ep[:publishedDate].strftime("%b") %></li>
-                    <li><a href="<%= ep[:torrentLink] %>">Link</a></li>
-                </ul>
-            <% end %>
-        <% end %>
-    </body>
-</html>
+<% shows.keys.sort.reverse.each do |season| %>
+  <strong class="seasons">Season <%= season %></strong>
+  <br/>
+  <% shows[season][:episodes].keys.sort.each do |b| %>
+    <% ep = shows[season][:episodes][b] %>
+    <div>
+      <a href="<%= ep[:torrentLink] %>">
+        <strong><%= b %></strong>
+        <br/>
+        <span><%= ep[:publishedDate].strftime("%d %b %Y") %></span>
+      </a>
+    </div>
+  <% end %>
+  <br/><br/>
+<% end %>

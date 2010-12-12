@@ -21,7 +21,7 @@ class ReallyEZTV
     rescue Exception => message
       raise message
     end
-    
+
 
     begin
       showDetails = @rssProcessor.getShow(rssData)

@@ -5,4 +5,4 @@ set :public,   File.expand_path(File.dirname(__FILE__) + '/lib/public')
 set :views,    File.expand_path(File.dirname(__FILE__) + '/lib/views')
 set :env,      :production
 disable :run, :reload
-run Sinatra::Application
+run ReallyEZTVFrontEnd

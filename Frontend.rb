@@ -83,5 +83,3 @@ class ReallyEZTVFrontEnd < Sinatra::Base
     end
   end
 end
-
-ReallyEZTVFrontEnd.run!

@@ -1,6 +1,6 @@
 require 'sinatra'
 require 'erb'
-require_relative 'ReallyEZTV.rb'
+require 'ReallyEZTV.rb'
 require 'json'
 require './lib/UtilityMethods'
 require './lib/Trie'

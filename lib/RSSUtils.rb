@@ -1,7 +1,7 @@
 require 'date'
 require 'rss'
 require 'pstore'
-require 'lib/UtilityMethods'
+require './lib/UtilityMethods'
 module RSSUtils
   STORAGE = "storage/feeds.pstore"
   class RSSCache

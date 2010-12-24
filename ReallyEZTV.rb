@@ -1,7 +1,7 @@
-require 'lib/RSSUtils'
-require 'lib/UtilityMethods'
-require 'lib/ReallyEZTVShowProcessor'
-require 'lib/exception/InvalidShowMetadataError'
+require_relative './lib/RSSUtils'
+require_relative './lib/UtilityMethods.rb'
+require_relative './lib/ReallyEZTVShowProcessor.rb'
+require_relative './lib/exception/InvalidShowMetadataError.rb'
 
 class ReallyEZTV
   include RSSUtils

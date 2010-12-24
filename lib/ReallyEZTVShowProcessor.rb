@@ -1,6 +1,6 @@
-require 'ShowData.rb'
-require 'lib/exception/InvalidShowMetadataError'
-require 'lib/UtilityMethods'
+require './ShowData.rb'
+require './lib/exception/InvalidShowMetadataError'
+require './lib/UtilityMethods'
 
 class ReallyEZTVShowProcessor
   include UtilityMethods

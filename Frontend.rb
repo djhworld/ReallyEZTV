@@ -1,9 +1,9 @@
 require 'sinatra'
 require 'erb'
-require 'ReallyEZTV'
+require_relative 'ReallyEZTV.rb'
 require 'json'
-require 'lib/UtilityMethods'
-require 'lib/Trie'
+require './lib/UtilityMethods'
+require './lib/Trie'
 
 class ReallyEZTVFrontEnd < Sinatra::Base
   include UtilityMethods
